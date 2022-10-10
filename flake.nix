@@ -18,12 +18,20 @@
 
       waylandOverlay = (final: prev:
         let
+          vendoredLibdrm = prev.callPackage ./pkgs/libdrm { };
+
+          # if vendoredLibdrm is newer than libdrm in nixpkgs then use vendoredLibdrm
+          libdrm =
+            if (lib.versionAtLeast prev.libdrm.version vendoredLibdrm.version)
+            then prev.libdrm else vendoredLibdrm;
+
           waylandPkgs = rec {
             # wlroots-related
             cage = prev.callPackage ./pkgs/cage {
               inherit (prev) wlroots;
             };
             drm_info = prev.callPackage ./pkgs/drm_info {
+              inherit libdrm;
               inherit (prev) drm_info;
             };
             gebaar-libinput = prev.callPackage ./pkgs/gebaar-libinput { };
@@ -76,6 +84,7 @@
               inherit (prev) wlogout;
             };
             wlroots = prev.callPackage ./pkgs/wlroots {
+              inherit libdrm;
               inherit (prev) wlroots;
             };
             wlr-randr = prev.callPackage ./pkgs/wlr-randr { };

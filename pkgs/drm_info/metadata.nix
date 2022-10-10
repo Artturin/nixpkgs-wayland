@@ -1,7 +1,4 @@
 rec {
-  # pin until libdrm 2.4.113 is in master
-  # https://nixpk.gs/pr-tracker.html?pr=191247
-  skip = true;
   domain = "gitlab.freedesktop.org";
   owner = "emersion";
   repo = "drm_info";
