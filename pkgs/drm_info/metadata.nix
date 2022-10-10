@@ -4,6 +4,6 @@ rec {
   repo = "drm_info";
   repo_git = "https://${domain}/${owner}/${repo}";
   branch = "master";
-  rev = "5af85df6a7cd98a56cf2df8543bed503fc5c8591";
-  sha256 = "sha256-m2WnnUUNVMCM/YPQVjbqBU4p5XbK7G7nZyTGlLGL2RE=";
+  rev = "4f4d727a9757e7ef6bf25ad7d289066990a1face";
+  sha256 = "sha256-Lu01610ZjIv62hrqmV3tX4oTQ4dLsKkoJHVA8ai6b5A=";
 }
